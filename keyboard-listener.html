@@ -3,6 +3,16 @@
 <head>
   <meta charset='utf-8'>
   <body>
+    <p>Щёлкните по документу для запуска обработчика.</p>
+<!-- <script>
+addEventListener("click", function() {
+console.log("Щёлк!");
+});
+</script> -->
+<button id="mybtn" type="button" style="background-color: white">Тролололо</button>
+<audio id="myaudio">
+<source src="D:\www\octobox\myaudio.mp3" type="audio/mp3">
+</audio>
     <script type="text/javascript">
     document.onkeydown = function(event) {
       var key_press = String.fromCharCode(event.keyCode);
@@ -24,7 +34,28 @@
     <br/>
     Код клавиши: <span id='keyCode'></span>
     <p id="status">Статус события</p>
-
+    <script>
+      /*Вешаем обработчик события на кнопку с идентификатором mybtn. Скрипт обязательно должен стоять
+      после кнопки, т.к. скрипты выполняются сразу при своей загрузке, и если он выполнится раньше
+      загрузки кнопки - он просто ее не увидит.*/
+        document.getElementById("mybtn").onclick = function()
+        {
+          var myaudio = document.getElementById("myaudio");
+          if(myaudio.paused == true)
+          {
+            document.getElementById("myaudio").play();
+            // this.style.backgroundColor = "Blue"; //Цвет кнопки можно изменить напрямую, без всяких картинок.
+            // this.style.color = "White"; //Заодно меняем цвет текста для удобичитаемости
+            //this здесь является самой кнопкой, так как функция является дочерней кнопке
+          }
+          // else if (myaudio.paused == false)
+          // {
+          //   // document.getElementById("myaudio").pause();
+          //   // this.style.backgroundColor = "White";
+          //   // this.style.color = "Black";
+          // }
+        }
+       </script>
   </body>
 </head>
 </html>
